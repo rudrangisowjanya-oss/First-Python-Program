@@ -1,0 +1,41 @@
+# Import libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+
+# Load the dataset
+data = pd.read_csv(r"C:\Users\Rudrangi Sowjanya\OneDrive\Desktop\Internship\Hours_Scores.csv")
+
+# Display first 5 rows
+print("First 5 Rows:")
+print(data.head())
+
+# Display dataset information
+print("\nDataset Information:")
+print(data.info())
+
+# Separate input (X) and output (y)
+X = data[['Hours']]
+y = data['Scores']
+
+# Split the dataset
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.2,
+    random_state=42
+)
+
+print("\nTraining Data:", len(X_train))
+print("Testing Data:", len(X_test))
+
+# Create the model
+model = LinearRegression()
+
+# Train the model
+model.fit(X_train, y_train)
+
+print(" ML fundamentals understood.")
